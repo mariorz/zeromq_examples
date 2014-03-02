@@ -18,8 +18,9 @@ poller.register(backend, zmq.POLLIN)
 
 # Switch messages between sockets
 while True:
-    socks = dict(poller.poll())
-
+    print "before polling"
+    socks = dict(poller.poll(1))
+    print "after polling"
     if socks.get(frontend) == zmq.POLLIN:
         message = frontend.recv_multipart()
         backend.send_multipart(message)
