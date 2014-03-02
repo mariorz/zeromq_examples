@@ -17,7 +17,7 @@
 
 (define zmq-lib (ffi-lib "libzmq"))
 
-(define mariopoll (timeout) (get-ffi-obj zmq_poll zmq-lib ctype)
+
 (define-syntax-rule (define-zmq* (external internal) type)
   (define external
     (get-ffi-obj 'internal zmq-lib type)))
